@@ -1,4 +1,6 @@
 package com.sda.vendingmachine.exceptions;
 
-public class NotSufficientFundException {
+public class NotSufficientFundException extends RuntimeException {
+
+    public NotSufficientFundException(String message) {super(message);}
 }
