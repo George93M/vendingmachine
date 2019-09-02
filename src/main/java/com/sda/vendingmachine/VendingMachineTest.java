@@ -17,14 +17,20 @@ public class VendingMachineTest {
         Item mineralWater = new Item(2, "Mineral Water", BigDecimal.valueOf(7));
         Item cocaCola = new Item(3, "Coca Cola", BigDecimal.valueOf(10));
 
-        Queue<Item> itemQueue = new ArrayDeque<Item>();
-        itemQueue.add(heidiChccolate);
-        itemQueue.add(mineralWater);
-        itemQueue.add(cocaCola);
+
+        /////////// randul cu heidi contine 3 bucati
+
+        Queue<Item> chocolateItemQueue = new ArrayDeque<Item>();
+
+        chocolateItemQueue.add(heidiChccolate);
+        chocolateItemQueue.add(heidiChccolate);
+        chocolateItemQueue.add(heidiChccolate);
+
+
 
         VendingStorage vendingStorage = new VendingStorage();
         Map<Integer, Queue<Item>> storageMap = vendingStorage.getStorageMap();
 
-        storageMap.put(22, itemQueue);
+        storageMap.put(22, chocolateItemQueue);
     }
 }
