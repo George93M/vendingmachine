@@ -7,5 +7,6 @@ public enum Coin {
     DIME,
     QUARTER,
     HALF,
-    ONE_DOLLAR
+    ONE_DOLLAR;
+
 }

@@ -14,4 +14,17 @@ import java.util.Queue;
 public class VendingStorage {
 
     Map<Integer, Queue<Item>> storageMap;
+
+    @Override
+    public String toString() {
+        String toReturn = "";
+
+        for(Map.Entry<Integer, Queue<Item>> entry : storageMap.entrySet()){
+            toReturn += "Tasta: " + entry.getKey() + "\n" +
+                    entry.getValue().toString() +"\n" +
+                    " cantitate:" + entry.getValue().size();
+        }
+        return toReturn;
+    }
+
 }

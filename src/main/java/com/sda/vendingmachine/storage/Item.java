@@ -13,4 +13,10 @@ public class Item {
     private int id;
     private String name;
     private BigDecimal price;
+
+    @Override
+    public String toString() {
+        return "Product name:"  + name + "\n" +
+                "Price is:"+    price;
+    }
 }

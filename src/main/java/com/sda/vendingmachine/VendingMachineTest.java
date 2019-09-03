@@ -1,11 +1,15 @@
 package com.sda.vendingmachine;
 
+import com.sda.vendingmachine.bank.Bank;
+import com.sda.vendingmachine.bank.Coin;
+import com.sda.vendingmachine.implementation.VendingMachineImpl;
 import com.sda.vendingmachine.storage.Item;
 import com.sda.vendingmachine.storage.VendingStorage;
 
 import javax.xml.namespace.QName;
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 
@@ -27,10 +31,60 @@ public class VendingMachineTest {
         chocolateItemQueue.add(heidiChccolate);
 
 
+        Queue<Item> colaItemQueue = new ArrayDeque<Item>();
+        colaItemQueue.add(cocaCola);
 
-        VendingStorage vendingStorage = new VendingStorage();
-        Map<Integer, Queue<Item>> storageMap = vendingStorage.getStorageMap();
+        Queue<Item> mineralWaterItemQueue = new ArrayDeque<Item>();
+        mineralWaterItemQueue.add(mineralWater);
 
+
+        Map<Integer, Queue<Item>> storageMap = new HashMap<>();
         storageMap.put(22, chocolateItemQueue);
+        storageMap.put(23, colaItemQueue);
+        storageMap.put(24, mineralWaterItemQueue);
+
+
+
+        VendingStorage vendingStorage = new VendingStorage(storageMap);
+        System.out.println(vendingStorage);
+
+        Bank bank = new Bank();
+        Queue<Coin> oneDollars = new ArrayDeque<>();
+        oneDollars.add(Coin.ONE_DOLLAR);
+        oneDollars.add(Coin.ONE_DOLLAR);
+        oneDollars.add(Coin.ONE_DOLLAR);
+
+        Queue<Coin> dimes = new ArrayDeque<>();
+        dimes.add(Coin.DIME);
+
+        Queue<Coin> halfs = new ArrayDeque<>();
+        halfs.add(Coin.HALF);
+        halfs.add(Coin.HALF);
+
+        Queue<Coin> penny = new ArrayDeque<>();
+        penny.add(Coin.PENNY);
+        penny.add(Coin.PENNY);
+        penny.add(Coin.PENNY);
+
+        bank.setOneDollarStack(oneDollars);
+        bank.setDimeStack(dimes);
+        bank.setHalfStack(halfs);
+        bank.setPennyStack(penny);
+        bank.setQuarterStack(new ArrayDeque<>());
+        bank.setNickleStack(new ArrayDeque<>());
+
+
+        System.out.println(bank);
+        System.out.println("Vending storage is:" +"\n" + vendingStorage + "\n");
+        System.out.println();
+
+        VendingMachineImpl vendingMachine= new VendingMachineImpl();
+        vendingMachine.setBank(bank);
+        vendingMachine.setStorage(vendingStorage);
+        vendingMachine.getItem(23);
+
+        System.out.println("Product is :" +"\n" +  vendingMachine.getItem(22));
+
+        vendingMachine.getItem(23);
     }
 }
