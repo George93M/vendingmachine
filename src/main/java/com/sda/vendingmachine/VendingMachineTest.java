@@ -2,6 +2,7 @@ package com.sda.vendingmachine;
 
 import com.sda.vendingmachine.bank.Bank;
 import com.sda.vendingmachine.bank.Coin;
+import com.sda.vendingmachine.implementation.IVendingMachine;
 import com.sda.vendingmachine.implementation.VendingMachineImpl;
 import com.sda.vendingmachine.storage.Item;
 import com.sda.vendingmachine.storage.VendingStorage;
@@ -85,6 +86,25 @@ public class VendingMachineTest {
 
         System.out.println("Product is :" +"\n" +  vendingMachine.getItem(22));
 
-        vendingMachine.getItem(23);
+        vendingMachine.getItem(22);
+
+        Queue<Coin> wallet = new ArrayDeque<>();
+        wallet.add(Coin.ONE_DOLLAR);
+        wallet.add(Coin.ONE_DOLLAR);
+        wallet.add(Coin.ONE_DOLLAR);
+        wallet.add(Coin.ONE_DOLLAR);
+        wallet.add(Coin.ONE_DOLLAR);
+        wallet.add(Coin.QUARTER);
+        wallet.add(Coin.HALF);
+        wallet.add(Coin.DIME);
+        wallet.add(Coin.NICKLE);
+        wallet.add(Coin.PENNY);
+
+        vendingMachine.payItem(22,wallet);
+        System.out.println(vendingMachine.getTotalMoneyAsBigDecimal(wallet));
+        System.out.println(wallet);
+        System.out.println(bank);
+
+
     }
 }
